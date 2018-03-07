@@ -143,7 +143,7 @@
             }
         }
 
-        [self writeDictionary:configurationToSave toFilePath:(!_decryptionPassword ? LIBRARY_DIRECTORY_PATH : LIBRARY_ENCRYPTED_DIRECTORY_PATH)];
+        [self writeDictionary:[configurationToSave copy] toFilePath:(!_decryptionPassword ? LIBRARY_DIRECTORY_PATH : LIBRARY_ENCRYPTED_DIRECTORY_PATH)];
     }
 }
 
@@ -347,7 +347,7 @@
     }
 }
 
-- (BOOL)writeDictionary:(NSMutableDictionary *)dictionary toFilePath:(NSString *)filePath
+- (BOOL)writeDictionary:(NSDictionary *)dictionary toFilePath:(NSString *)filePath
 {
     if (!_decryptionPassword)
     {
