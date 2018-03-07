@@ -291,13 +291,13 @@
 {
     if (!_decryptionPassword)
     {
-        NSString *path = [[NSBundle mainBundle] bundlePath];
+        NSString *path = [[NSBundle bundleForClass:self.class] bundlePath];
         NSString *finalPath = [path stringByAppendingPathComponent:@"Configuration.plist"];
         return [self loadFileFromPath:finalPath];
     }
 
     // the config file is encrypted
-    NSString *path = [[NSBundle mainBundle] pathForResource:@"Configuration" ofType:@"enc"];
+    NSString *path = [[NSBundle bundleForClass:self.class] pathForResource:@"Configuration" ofType:@"enc"];
     return [self loadFileFromPath:path];
 }
 
